@@ -31,6 +31,10 @@ app.get('/compose', function(req, res){
   res.render('compose');
 })
 
+app.post('/', function(req, res){
+  console.log(req.body.entry);
+})
+
 app.listen(port, function() {
   console.log(`Server started on port ${port}`);
 });
