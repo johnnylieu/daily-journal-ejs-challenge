@@ -15,6 +15,8 @@ app.use(express.static("public"));
 
 port = process.env.PORT || 3000;
 
+posts = [];
+
 app.get('/', function(req, res){
   res.render('home', {homeStartingContent: homeStartingContent});
 })
@@ -32,7 +34,13 @@ app.get('/compose', function(req, res){
 })
 
 app.post('/compose', function(req, res){
-  console.log(req.body.postTitle);
+  post = {
+    title: req.body.postTitle,
+    entry: req.body.postEntry,
+  };
+
+  posts.push(post);
+  res.redirect('/');
 })
 
 app.listen(port, function() {
