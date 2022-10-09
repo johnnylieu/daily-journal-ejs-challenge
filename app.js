@@ -49,7 +49,7 @@ app.get('/posts/:postName', function(req, res){
 
   for (i=0; i<posts.length; i++) {
     if (_.lowerCase(posts[i].title) === _.lowerCase(postName)){
-      console.log(`Match found!`);
+      res.render('post', {postTitle: posts[i].title, postEntry: posts[i].entry});
     };
   }
 })
