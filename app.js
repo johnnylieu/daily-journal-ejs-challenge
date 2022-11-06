@@ -65,11 +65,11 @@ app.get('/posts/:postName', function(req, res){
   postName = req.params.postName;
 
   Post.findOne({title: postName}, function(err, posts){
-    if (err) {
-      console.log(err);
+    if (!err) {
+      console.log(posts.title);
+      res.render('post', {postTitle: posts.title, postEntry: posts.post})
     } else {
-      console.log(posts);
-      // res.render('post', {postTitle: posts.title, postEntry: posts.post})
+      console.log(err)
     }
   });
 
