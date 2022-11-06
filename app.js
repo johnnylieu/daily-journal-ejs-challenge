@@ -25,8 +25,6 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model('Post', postSchema);
 
-posts = [];
-
 app.get('/', function(req, res){
   Post.find(function(err, postEntries){
     if (err) {
@@ -66,11 +64,20 @@ app.post('/compose', function(req, res){
 app.get('/posts/:postName', function(req, res){
   postName = req.params.postName;
 
-  for (i=0; i<posts.length; i++) {
-    if (_.lowerCase(posts[i].title) === _.lowerCase(postName)){
-      res.render('post', {postTitle: posts[i].title, postEntry: posts[i].entry});
-    };
-  }
+  Post.findOne({title: postName}, function(err, posts){
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(posts);
+      // res.render('post', {postTitle: posts.title, postEntry: posts.post})
+    }
+  });
+
+  // for (i=0; i<posts.length; i++) {
+  //   if (_.lowerCase(posts[i].title) === _.lowerCase(postName)){
+  //     res.render('post', {postTitle: posts[i].title, postEntry: posts[i].entry});
+  //   };
+  // }
 })
 
 app.listen(port, function() {
