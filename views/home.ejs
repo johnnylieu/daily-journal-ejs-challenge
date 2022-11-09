@@ -2,7 +2,9 @@
 <h1>Home</h1>
 <%= homeStartingContent %>
 
-    <h1><%= postTitle %></h1>
-    <p><%= postEntry.substring(0,55) %> ... <a href="/posts/<%=postTitle%>">Read More</a></p>
+    <% postEntries.forEach(function(postEntries){ %>
+        <h1><%= postEntries.title %></h1>
+        <p><%= (postEntries.post).substring(0,55) %>... <a href="/posts/<%=postEntries.title%>">Read More</a></p>
+    <% }) %>
 
 <%- include('partials/footer'); -%>

@@ -30,10 +30,7 @@ app.get('/', function(req, res){
     if (err) {
       console.log(err);
     } else {
-      postEntries.forEach(function(postEntries) {
-        // console.log(`${postEntries.title}, \n${postEntries.post}`);
-        res.render('home', {homeStartingContent: homeStartingContent, postTitle: postEntries.title, postEntry: postEntries.post})
-      })
+      res.render('home', {homeStartingContent: homeStartingContent, postEntries: postEntries})
     }
   })
 })
@@ -52,7 +49,7 @@ app.get('/compose', function(req, res){
 
 app.post('/compose', function(req, res){
   newPost = new Post({
-    title: req.body.postTitle,
+    title: (req.body.postTitle).trim(),
     post: req.body.postEntry
   });
 
