@@ -1,8 +1,6 @@
 # Daily Journal
 
-This is a daily journal web app using EJS templating and layouts.
-
-11/6/2022 - app is now linked to mongo db.
+This is a daily journal web app using EJS templating and layouts, each post is stored in Mongo DB.
 
 ## Video demo
 
