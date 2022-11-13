@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 _ = require('lodash');
-const {test123} = require('./noneyo.js');
+// const {test123} = require('./noneyo.js');
 
 port = process.env.PORT || 3000;
 
@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect(`mongodb+srv://jlieu83:${test123}@cluster0.lkecag0.mongodb.net/ejsblogDB`);
+mongoose.connect(`mongodb+srv://jlieu83:${prcess.env.test123}@cluster0.lkecag0.mongodb.net/ejsblogDB`);
 
 const postSchema = new mongoose.Schema({
   title: String,
@@ -74,3 +74,5 @@ app.get('/posts/:postName', function(req, res){
 app.listen(port, function() {
   console.log(`Server started on port ${port}`);
 });
+
+// 352
